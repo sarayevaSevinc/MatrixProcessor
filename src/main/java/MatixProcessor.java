@@ -7,10 +7,10 @@ public class MatixProcessor {
     private static final int[] ROWS = new int[] {-1, 1, 0, 0};
 
     public String findPairs(String stringForMatrix, String word) {
-        int dimension = (int) Math.sqrt(stringForMatrix.length());
+        int size = (int) Math.sqrt(stringForMatrix.length());
         char[][] matrix = convertStringToArr(stringForMatrix);
-        for (int row = 0; row < dimension; row++) {
-            for (int col = 0; col < dimension; col++) {
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
                 Optional<List<String>> optionalPair
                         = findChar(row, col, matrix, word, 0, new ArrayList<>());
                 if (optionalPair.isPresent()) {
@@ -19,21 +19,6 @@ public class MatixProcessor {
             }
         }
         return "The matrix does not contain this word!";
-    }
-
-    static class Pair {
-        private int x;
-        private int y;
-
-        public Pair(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        @Override
-        public String toString() {
-            return "[" + x + "," + y + "]";
-        }
     }
 
     private static char[][] convertStringToArr(String str) {
